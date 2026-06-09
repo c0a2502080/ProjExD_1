@@ -22,16 +22,17 @@ def main():
             
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()  # 練習10-3：すべてのキーの押下状態の取得   
-        kk_rct.move_ip(-1, 0)
+        vx, vy = -1, 0
         # print(key_lst)
         if key_lst[pg.K_UP]:  # 上矢印キーが押されたら
-               kk_rct.move_ip(0, -1)  # 上に移動
+            vy  -= 1 # 上に移動
         if key_lst[pg.K_DOWN]:  # 下矢印キーが押されたら
-               kk_rct.move_ip(0, +1)  # 下に移動
+            vy  += 1 # 下に移動
         if key_lst[pg.K_LEFT]:
-               kk_rct.move_ip(-1, 0)
+            vx  -= 1
         if key_lst[pg.K_RIGHT]:
-               kk_rct.move_ip(+2, 0)
+            vx  += 2
+        kk_rct.move_ip(vx, vy)
         x=tmr%3200
         screen.blit(bg_img, [-x, 0])
         screen.blit(bg_img2, [-x+1600, 0])
